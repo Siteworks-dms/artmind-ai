@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard'
 import ProfilePage from './pages/ProfilePage'
 import PricingPage from './pages/PricingPage'
 import SuccessPage from './pages/SuccessPage'
+import GalleryPage from './pages/GalleryPage'
 
 function LandingPage() {
   const { user } = useAuth()
@@ -46,10 +47,8 @@ function LandingPage() {
           </div>
 
           <h1 style={{
-            fontFamily:'var(--font-display)',
-            fontSize:'clamp(3rem,8vw,7rem)',
-            fontWeight:900, lineHeight:1.05,
-            letterSpacing:'-.03em', marginBottom:20,
+            fontFamily:'var(--font-display)', fontSize:'clamp(3rem,8vw,7rem)',
+            fontWeight:900, lineHeight:1.05, letterSpacing:'-.03em', marginBottom:20,
           }}>
             <span style={{background:'linear-gradient(135deg,var(--primary),var(--accent2))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>
               Unleash Your
@@ -97,10 +96,10 @@ function LandingPage() {
           </div>
           <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(220px,1fr))',gap:20}}>
             {[
-              {icon:'🎨',title:'DALL-E 3',desc:"OpenAI's flagship model. Exceptional quality and prompt accuracy."},
+              {icon:'🎨',title:'DALL-E 3',desc:"OpenAI's flagship — exceptional quality and prompt accuracy."},
               {icon:'⚡',title:'Stable Diffusion',desc:"Stability AI's powerful XL models with fine-grained style control."},
-              {icon:'🤗',title:'Hugging Face',desc:'Hundreds of open-source models. Great for creative experimentation.'},
-              {icon:'✦',title:'10 Free Credits',desc:'Every new account starts with 10 free images. No card needed.'},
+              {icon:'🤗',title:'Hugging Face',desc:'Hundreds of open-source models. Great for experimentation.'},
+              {icon:'🖼️',title:'Personal Gallery',desc:'Every image saved to your gallery. Browse, download, delete anytime.'},
             ].map(f => (
               <div key={f.title} style={{background:'var(--surface)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'26px 24px',transition:'transform var(--t),box-shadow var(--t)'}}
                 onMouseEnter={e=>{(e.currentTarget as HTMLDivElement).style.transform='translateY(-4px)';(e.currentTarget as HTMLDivElement).style.boxShadow='0 14px 36px rgba(124,58,237,.1)'}}
@@ -120,7 +119,7 @@ function LandingPage() {
           Simple, transparent pricing
         </h2>
         <p style={{color:'var(--text2)',maxWidth:400,margin:'0 auto 28px',lineHeight:1.7}}>
-          Start free, buy more when you need them. No subscriptions unless you want one.
+          Start free, buy more when you need them.
         </p>
         <a href="/pricing" className="btn-primary" style={{textDecoration:'none',padding:'13px 32px',fontSize:'1rem'}}>
           View pricing →
@@ -149,7 +148,7 @@ function AppInner() {
         <Route path="/pricing"   element={<PricingPage/>}/>
         <Route path="/success"   element={<SuccessPage/>}/>
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
-        <Route path="/gallery"   element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
+        <Route path="/gallery"   element={<ProtectedRoute><GalleryPage/></ProtectedRoute>}/>
         <Route path="/profile"   element={<ProtectedRoute><ProfilePage/></ProtectedRoute>}/>
         <Route path="*"          element={
           <div style={{paddingTop:'var(--nav-h)',textAlign:'center',padding:'120px 24px'}}>
